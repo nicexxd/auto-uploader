@@ -30,10 +30,10 @@ jobs:
       - name: Build with Gradle (no wrapper)
         uses: gradle/gradle-build-action@v2
         with:
-          gradle-version: 8.2.1
+          gradle-version: 8.2.2
           build-root-directory: apk/android-client
           arguments: >-
-            assembleDebug assembleRelease
+            assembleDebug assembleRelease --stacktrace --info --warning-mode all --no-daemon
 
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
