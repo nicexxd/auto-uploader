@@ -27,10 +27,16 @@ jobs:
         run: |
           sdkmanager --install "platform-tools" "platforms;android-34" "build-tools;34.0.0"
 
-      - name: Build with Gradle (no wrapper)
+      - name: Generate Gradle Wrapper (CI only)
         uses: gradle/gradle-build-action@v2
         with:
           gradle-version: 8.2.1
+          build-root-directory: apk/android-client
+          arguments: wrapper
+
+      - name: Build with Gradle Wrapper
+        uses: gradle/gradle-build-action@v2
+        with:
           build-root-directory: apk/android-client
           arguments: >-
             assembleDebug assembleRelease --stacktrace --info --warning-mode all --no-daemon
