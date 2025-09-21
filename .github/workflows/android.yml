@@ -30,7 +30,7 @@ jobs:
       - name: Build with Gradle (no wrapper)
         uses: gradle/gradle-build-action@v2
         with:
-          gradle-version: 8.2.2
+          gradle-version: 8.2.1
           build-root-directory: apk/android-client
           arguments: >-
             assembleDebug assembleRelease --stacktrace --info --warning-mode all --no-daemon
