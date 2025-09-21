@@ -20,6 +20,14 @@ import okhttp3.*
 import okio.BufferedSink
 import java.io.InputStream
 import java.util.concurrent.Executors
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var urlEdit: EditText
@@ -215,7 +223,7 @@ class StreamRequestBody(
     private val uri: Uri,
     private val mime: String? = null
 ) : RequestBody() {
-    override fun contentType(): MediaType? = mime?.let { MediaType.parse(it) }
+    override fun contentType(): MediaType? = mime?.toMediaTypeOrNull()
     override fun writeTo(sink: BufferedSink) {
         resolver.openInputStream(uri)?.use { input: InputStream ->
             val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
