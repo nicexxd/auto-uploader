@@ -38,6 +38,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           build-root-directory: apk/android-client
+          cache-read-only: false
           arguments: >-
             assembleDebug assembleRelease --stacktrace --info --warning-mode all --no-daemon
 
